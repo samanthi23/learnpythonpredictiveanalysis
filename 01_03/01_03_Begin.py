@@ -11,6 +11,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 import matplotlib.pyplot as plt 
+import seaborn as sns
+
 
 #import data
 data = pd.read_csv("../Datasets/insurance.csv")
@@ -21,6 +23,17 @@ print(data.head(15))
 ############################################01_03_HandlingMissingValues###################################################
 
 #check how many values are missing (NaN) before we apply the methods below 
+count_nan = data.isnull().sum()
+print(count_nan[count_nan > 0])
+
+data['bmi'].fillna(data['bmi'].mean(), inplace = True)
+
+
+
+
+
+
+
 
 
 
