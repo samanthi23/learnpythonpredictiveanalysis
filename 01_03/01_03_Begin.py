@@ -28,6 +28,8 @@ print(count_nan[count_nan > 0])
 
 data['bmi'].fillna(data['bmi'].mean(), inplace = True)
 
+sex = data.iloc[:, 1:2].values
+smoker = data.iloc[:, 4:5].values
 
 
 
