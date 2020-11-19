@@ -65,6 +65,28 @@ print(data.head(15))
 count_nan = data.isnull().sum() # the number of missing values for every column
 print(count_nan[count_nan > 0])
 
+#my comment here added lines from Finish.py
+
+region = data["region"] # series 
+region_encoded, region_categories = pd.factorize(region)
+factor_region_mapping = dict(zip(region_categories, region_encoded)) #mapping of encoded numbers and original categories. 
+
+print("Pandas factorize function for label encoding with series")  
+print(region[:10]) #original version 
+print(region_categories) #list of categories
+print(region_encoded[:10]) #encoded numbers for categories 
+print(factor_region_mapping) # print factor mapping
+
+
+#mycomment entered data here 
+region = data["region"]
+region_encoded = pd.get_dummies(region, prefix='')
+
+print("Pandas get_dummies function for one hot encoding with series")  
+
+print(region[:10]) #original version 
+print(region_encoded[:10]) #encoded numbers for categories 
+
 
 ############################################01_04_ConvertCategoricalDataintoNumbers##############################################
 
@@ -90,17 +112,30 @@ print(sex[:10])
 
 
 ## le for smoker
+le = LabelEncoder()
 
+smoker[:,0] = le.fit_transform(smoker[:,0])
+smoker = pd.DataFrame(smoker)
+smoker.columns = ['smoker']
+le_smoker_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
+#print('sklearn')
+print("Sklearn label encoder results for smoker")
+print(le_smoker_mapping)
+print(smoker[:10])
 
 #sklearn one hot encoding: maps each category to 0 (cold) or 1 (hot) 
-
+region = data.iloc[:, 5:6].values
 #one hot encoder = ohe
-
+ohe = OneHotEncoder()
 #create ndarray for one hot encodoing (sklearn)
-
-
+region = ohe.fit_transform(region).toarray()
+#my comment, convert this to a dataframe
+region = pd.DataFrame(region)
+region.columns = ['northeast', 'northwest', 'southeast', 'southwest']
+print("Sklearn one hot encoder results for region:") 
 ## ohe for region
-
+#my comment, print first 10 rows
+print(region[:10])
 
 
 
