@@ -144,14 +144,20 @@ print(region[:10])
 
 #putting the data together:
 
+
+
 ##take the numerical data from the original data
 
+X_num = data[['age', 'bmi', 'children']]
+
 ##take the encoded data and add to numerical data
+X_final = pd.concat([X_num, sex, smoker, region], axis = 1)
 
 #define y as being the "charges column" from the original dataset
-
+y_final = data[['charges']].copy()
 #Test train split
-
+#mycomment starting here Friday 10am
+X_train, X_test, y_train, y_test = train_test_split(X_final, y_final, test_size = 0. )
 
 
 
