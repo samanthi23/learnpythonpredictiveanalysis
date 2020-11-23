@@ -157,7 +157,7 @@ X_final = pd.concat([X_num, sex, smoker, region], axis = 1)
 y_final = data[['charges']].copy()
 #Test train split
 #mycomment starting here Friday 10am
-X_train, X_test, y_train, y_test = train_test_split(X_final, y_final, test_size = 0. )
+X_train, X_test, y_train, y_test = train_test_split(X_final, y_final, test_size = 0.33, random_state = 0 )
 
 
 
