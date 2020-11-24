@@ -159,8 +159,9 @@ X_train, X_test, y_train, y_test = train_test_split(X_final, y_final, test_size 
 ############################################01_06_FeatureScaling##############################################
 
 #normalized scaler (fit transform on train, fit only on test)
-
-
+n_scaler = MinMaxScaler()
+X_train = n_scaler.fit_transform(X_train.astype(np.float))
+X_test = n_scaler.transform(X_test.astype(np.float))
 
 #standard scaler (fit transform on train, fit only on test)
 
